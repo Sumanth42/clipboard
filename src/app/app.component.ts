@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'neurolab-angular';
+  item:string='';
+  items=[''];
+  handleSend(){
+    this.items.push(this.item);
+    console.log(this.items);
+    this.item='';
+  }
 }

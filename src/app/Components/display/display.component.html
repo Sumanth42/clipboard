@@ -23,8 +23,9 @@
                   (click)="onDelete(item.id)">
                       <i class="fa-solid fa-trash-can"></i>
                   </span>
-                  <span class="float-end text-secondary mx-3" (click)="copyMessage(item.item)">
-                  <i class="fa fa-clipboard" aria-hidden="true"></i>
+                  <span class="float-end text-secondary mx-3" (click)="copyMessage(item.item,item.id)">
+                  <i *ngIf="!copied || item.id!=copiedId" class="fa fa-clipboard" aria-hidden="true"></i>
+                  <i *ngIf="copied && item.id==copiedId" class="fa-solid fa-check fa-fade fa-lg"></i>
                   </span>
 
               </span>

@@ -9,6 +9,8 @@ import { ClipboardService } from 'src/app/shared/clipboard.service';
 export class DisplayComponent implements OnInit {
   items:any[]=[];
   value:string='';
+  copied:boolean=false;
+  copiedId:number=-1;
   constructor(private clipboardService:ClipboardService ) { }
 
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class DisplayComponent implements OnInit {
     itemInput.value="";
     }
   }
-  copyMessage(val: string){
+  copyMessage(val: string,id:number){
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -36,7 +38,13 @@ export class DisplayComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    alert('copied successfully')
+    // alert('copied successfully')
+    this.copied=true;
+    this.copiedId=id;
+    setTimeout(() => {
+      this.copied=false;
+      this.copiedId=-1;
+    }, 1000);
   }
   onDelete(id:string){
     this.clipboardService.deleteItem(id);

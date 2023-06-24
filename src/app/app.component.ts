@@ -11,7 +11,6 @@ export class AppComponent {
   items=[''];
   handleSend(){
     this.items.push(this.item);
-    console.log(this.items);
     this.item='';
   }
 }

@@ -15,7 +15,6 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.clipboardService.firestoreCollection.valueChanges({idField:'id'}).subscribe(element=>{
-      console.log(element)
       this.items=element
     })
   }

@@ -18,6 +18,11 @@ export class DisplayComponent implements OnInit {
       this.items=element
     })
   }
+  isUrl(text: string): boolean {
+    // Regular expression pattern to match URLs
+    const urlPattern: RegExp = /^(?:http|https?):\/\/(?:www\.)?[^\s]+$/i;
+    return urlPattern.test(text);
+  }
   // @Input() items=['']
   onClick(itemInput:HTMLInputElement){
     if(itemInput.value){
@@ -25,6 +30,7 @@ export class DisplayComponent implements OnInit {
     itemInput.value="";
     }
   }
+
   copyMessage(val: string,id:number){
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';

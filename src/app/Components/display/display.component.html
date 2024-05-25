@@ -18,7 +18,8 @@
               <span>
                   <!-- <i class="text-success" (click)="onStatusChange(item.id,!item.isDone)"
                       [ngClass]="item.isDone?'fa-solid fa-circle-check':'fa-regular fa-circle'"></i> -->
-                  <span>{{item.item}}</span>
+                  <a *ngIf="isUrl(item.item)" href={{item.item}} target="_blank">{{item.item}}</a>
+                  <span *ngIf="!isUrl(item.item)">{{item.item}}</span>
                   <br>
                   <span class="float-end text-secondary"
                   (click)="onDelete(item.id)">
